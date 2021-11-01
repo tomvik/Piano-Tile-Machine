@@ -1,9 +1,6 @@
 TODO:
 - Implement select screen operation
     - Have save quit be q
-    - Take screenshot
-    - Select from point to point the rectangle
-    - Save in a txt the coordinates of the rectangle
     - Show screenshot and confirm if correct
 - Implement Run game operation
     - Have quit be q
@@ -26,3 +23,7 @@ DONE:
     - Run game
     - Loop game
     - Quit
+- Implement select screen operation
+    - Take screenshot
+    - Select from point to point the rectangle
+    - Save in a txt the coordinates of the rectangle

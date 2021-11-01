@@ -1,22 +1,21 @@
 from pynput import keyboard
 import sys
 
-option = ''
+import Common
+from ScreenWindowSelection import FindCoordinates
 
 
 def on_press(key):
-    global option
+    # global option
     if key == keyboard.Key.esc:
         print('Esc')
-        option = 'q'
-        sys.exit('Esc was pressed')
+        Common.option = 'q'
     try:
-        option = key.char
+        Common.option = key.char
         if key.char == 'q':
             print('q')
-            sys.exit('q was pressed')
     except:
-        option = ''
+        Common.option = ''
         pass
 
 
@@ -24,7 +23,7 @@ def Menu() -> None:
     print("Welcome to the Piano Tile Machine. Please select an option.\n")
 
     validOption = False
-    global option
+    # global option
 
     while not validOption:
         validOption = True
@@ -35,17 +34,18 @@ def Menu() -> None:
         print("\nPress q to quit at any time.\n")
 
         print("Select your option.")
-        option = ''
-        while(option == ''):
+        Common.option = ''
+        while(Common.option == ''):
             pass
 
-        if(option == '1'):
+        if(Common.option == '1'):
             print("Select screen window")
-        elif(option == '2'):
+            FindCoordinates()
+        elif(Common.option == '2'):
             print("Play game")
-        elif(option == '3'):
+        elif(Common.option == '3'):
             print("Loop game")
-        elif(option == 'q'):
+        elif(Common.option == 'q'):
             print("Force quit")
             break
         else:
