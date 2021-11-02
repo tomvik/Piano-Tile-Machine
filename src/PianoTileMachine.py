@@ -28,8 +28,9 @@ def Menu() -> None:
         validOption = True
 
         print("1. Select screen window.")
-        print("2. Play game.")
-        print("3. Loop game.")
+        print("2. Play game in slow mode. (1 click per screenshot)")
+        print("3. Play game in normal mode. (many clicks click per screenshot)")
+        print("4. Play game in stupidly fast mode. (no screenshots, just points)")
         print("\nPress q to quit at any time.\n")
 
         print("Select your option.")
@@ -41,10 +42,14 @@ def Menu() -> None:
             print("Select screen window")
             FindCoordinates()
         elif(Common.option == '2'):
-            print("Play game")
-            PlayGame()
+            print("Play game in slow mode")
+            PlayGame(1)
         elif(Common.option == '3'):
-            print("Loop game")
+            print("Play game in normal mode")
+            PlayGame(2)
+        elif(Common.option == '4'):
+            print("Play game in stupidly fast mode")
+            PlayGame(3)
         elif(Common.option == 'q'):
             print("Force quit")
             break

@@ -78,7 +78,10 @@ def CheckIfGameOver(binaryImg, width, height):
     # ShowImg("CheckIfGameOver", binaryImg)
 
 
-def PlayGame():
+# v1 = [45, 50]
+# v2 = [245, 396]
+# v3 Possibly infinite?
+def PlayGame(version: int = 2):
     print("Press p to play")
 
     while Common.option != "p":
@@ -92,15 +95,12 @@ def PlayGame():
         rawGameWindow[0], rawGameWindow[1], rawGameWindow[2], rawGameWindow[3])
 
     print(gameWindow)
-    pyautogui.screenshot('data/runtime_img/PlayGame.png', region=gameWindow)
+    # pyautogui.screenshot('data/runtime_img/PlayGame.png', region=gameWindow)
 
     print("Will begin playing the game")
 
     count = 0
     firstClick = True
-    # 3 screenshots full screen
-    # 6 with only region
-    # How to improve it?
     while Common.option != 'q':
         count += 1
         screenshot = pyautogui.screenshot(region=gameWindow)
@@ -115,17 +115,53 @@ def PlayGame():
                     tile.y + gameWindow.top + 50
                 ) for tile in blackTiles]
 
-            if len(blackTilesPosition):
-                blackTile = blackTilesPosition[0]
-                if firstClick:
-                    pyautogui.moveTo(blackTile.x, blackTile.y, duration=0)
+            if version == 1:
+                if len(blackTilesPosition):
+                    blackTile = blackTilesPosition[0]
+                    if firstClick:
+                        pyautogui.moveTo(blackTile.x, blackTile.y, duration=0)
+                        pyautogui.mouseDown(
+                            blackTile.x+40, blackTile.y, duration=0.11)
+                        firstClick = False
                     pyautogui.mouseDown(
-                        blackTile.x+40, blackTile.y, duration=0.11)
-                    firstClick = False
-                pyautogui.mouseDown(blackTile.x+40, blackTile.y, duration=0)
+                        blackTile.x+40, blackTile.y, duration=0)
+            elif version == 2:
+                for blackTile in blackTilesPosition:
+                    if firstClick:
+                        pyautogui.moveTo(blackTile.x, blackTile.y, duration=0)
+                        pyautogui.mouseDown(
+                            blackTile.x+40, blackTile.y, duration=0.11)
+                        firstClick = False
+                    pyautogui.mouseDown(
+                        blackTile.x+40, blackTile.y, duration=0)
+            elif version == 3:
+                if len(blackTilesPosition):
+                    blackTile = blackTilesPosition[0]
+                    if firstClick:
+                        pyautogui.moveTo(blackTile.x, blackTile.y, duration=0)
+                        pyautogui.mouseDown(
+                            blackTile.x+40, blackTile.y, duration=0.11)
+                        firstClick = False
+                    pyautogui.mouseDown(
+                        blackTile.x+40, blackTile.y, duration=0)
+                    positions = [
+                        gameWindow.left + gameWindow.width // 8,
+                        gameWindow.left + (gameWindow.width // 8) * 3,
+                        gameWindow.left + (gameWindow.width // 8) * 5,
+                        gameWindow.left + (gameWindow.width // 8) * 7,
+                    ]
+                    while Common.option != 'q':
+                        for position in positions:
+                            pyautogui.mouseDown(
+                                position, blackTile.y, duration=0.1)
+            else:
+                version = 2
+
         else:
             print("Game over")
             break
+
+    pyautogui.mouseUp()
 
 
 if __name__ == "__main__":
