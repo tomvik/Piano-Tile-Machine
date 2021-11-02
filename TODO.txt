@@ -2,11 +2,6 @@ TODO:
 - Implement select screen operation
     - Have save quit be q
     - Show screenshot and confirm if correct
-- Implement Run game operation
-    - Have quit be q
-    - Take screenshot from txt coordinates. Is partial ss possible?
-    - analyse 3 rows looking for black tile
-    - move mouse there and click
 - Implement Loop game:
     - Have quit be q
     - Save how to detect failure
@@ -27,3 +22,10 @@ DONE:
     - Take screenshot
     - Select from point to point the rectangle
     - Save in a txt the coordinates of the rectangle
+- Implement Run game operation
+    - Have quit be q
+    - Take screenshot from txt coordinates. Is partial ss possible?
+    - analyse 3 rows looking for black tile
+    - move mouse there and click
+    - many clicks per ss
+    - no ss... dumb but works

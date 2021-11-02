@@ -17,4 +17,4 @@ A Python script that destroys the Piano Tiles game
 
 3. Download the dependencies from the `requirements.txt` file.
 
-4. Run the src/PianoTileMachine.py script.
+4. Run the `src/PianoTileMachine.py` script and follow the instructions.
