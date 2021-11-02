@@ -3,10 +3,10 @@ import sys
 
 import Common
 from ScreenWindowSelection import FindCoordinates
+from Engine import PlayGame
 
 
 def on_press(key):
-    # global option
     if key == keyboard.Key.esc:
         print('Esc')
         Common.option = 'q'
@@ -23,7 +23,6 @@ def Menu() -> None:
     print("Welcome to the Piano Tile Machine. Please select an option.\n")
 
     validOption = False
-    # global option
 
     while not validOption:
         validOption = True
@@ -43,6 +42,7 @@ def Menu() -> None:
             FindCoordinates()
         elif(Common.option == '2'):
             print("Play game")
+            PlayGame()
         elif(Common.option == '3'):
             print("Loop game")
         elif(Common.option == 'q'):

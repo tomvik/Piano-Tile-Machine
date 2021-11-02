@@ -47,5 +47,6 @@ def FindCoordinates():
 
     if gameWindow:
         print("Found the window box. Writing to file.")
-        file = open("data/gameWindow.txt", "w")
+        file = open(Common.WINDOW_COORDINATES_TXT, "w")
         file.write(','.join(map(str, gameWindow)))
+        file.close()
